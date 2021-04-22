@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import {Link} from "react-router-dom";
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import CastNewVote from "./votes/CastNewVote";
 
 class LandingPage extends Component {
 
@@ -37,5 +37,5 @@ class LandingPage extends Component {
         );
     }
 }
- 
+
 export default LandingPage;
