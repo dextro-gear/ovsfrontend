@@ -1,26 +1,32 @@
 import { event } from "jquery";
 import React, { useState } from "react";
-import DisplayNewVote from "./DisplayNewVote";
+import DisplayVote from "./DisplayVote";
 
 export default function CastNewVote() {
   const vote = {
-    voterId: "v101",
-    candidateId: "c101",
-    societyId: "s101",
+    voterId: 101,
+    candidateId: 111,
+    candidateFirstName:"jhalak",
+    candidateLastName:"gandhi",
+    societyId: 121,
   };
 
   const voterIdRef = React.createRef();
   const candidateIdRef = React.createRef();
+  const candidateFirstNameRef =React.createRef();
+  const candidateLastNameRef =React.createRef();
   const societyIdRef = React.createRef();
 
   const initialState = {
     voterId: undefined,
     candidateId: undefined,
     societyId: undefined,
-    newVote: undefined,
-    errMsg: undefined,
+    candidateFirstName:undefined,
+    candidateLastName:undefined,
     formStatus: "",
   };
+
+  const response = { newVote: undefined, errMsg: undefined };
 
   const [state, setNewState] = useState(initialState);
 
@@ -43,11 +49,12 @@ export default function CastNewVote() {
   };
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={(event) => submitHandler(event)}>
-        <div>
+        <div className="form-group">
           <label>Enter voterId </label>
           <input
+            className="form-control"
             name="voterId"
             ref={voterIdRef}
             onChange={() => changeHandler(voterIdRef)}
@@ -56,14 +63,34 @@ export default function CastNewVote() {
         <div>
           <label>Enter candidateId </label>
           <input
+            className="form-control"
             name="candidateId"
             ref={candidateIdRef}
             onChange={() => changeHandler(candidateIdRef)}
           />
         </div>
         <div>
+          <label>Enter candidateFirstName </label>
+          <input
+            className="form-control"
+            name="candidateFirstName"
+            ref={candidateFirstNameRef}
+            onChange={() => changeHandler(candidateFirstNameRef)}
+          />
+        </div>
+        <div>
+          <label>Enter candidateLastName </label>
+          <input
+            className="form-control"
+            name="candidateLastName"
+            ref={candidateLastNameRef}
+            onChange={() => changeHandler(candidateLastNameRef)}
+          />
+        </div>
+        <div>
           <label>Enter societyId </label>
           <input
+            className="form-control"
             name="societyId"
             ref={societyIdRef}
             onChange={() => changeHandler(societyIdRef)}
@@ -74,25 +101,20 @@ export default function CastNewVote() {
       </form>
 
       <h2>{state.formStatus}</h2>
-      <h2>Details entered by user</h2>
-      <p>voterId is :{state.voterId}</p>
-      <br />
-      <p>candidateId is :{state.candidateId}</p>
-      <br />
-      <p>societyId is :{state.societyId}</p>
-      {state.newVote ? (
+
+      {response.newVote ? (
         <div>
           <h2>New vote added successfully</h2>
-          <DisplayNewVote vote={state.newVote} />
+          <DisplayVote vote={response.newVote} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
+      {response.errMsg ? (
         <p>
           Request was not successfull
           <br />
-          {state.errMsg}
+          {response.errMsg}
         </p>
       ) : (
         ""
