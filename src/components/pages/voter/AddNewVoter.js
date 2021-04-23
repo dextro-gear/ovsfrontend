@@ -39,8 +39,6 @@ export default function AddNewVoter() {
 
 
     const initialState = {
-        voterId: undefined,
-        voterIDCardNo: undefined,
         firstName: undefined,
         lastName: undefined,
         gender: undefined,
@@ -83,41 +81,46 @@ export default function AddNewVoter() {
 
         <div>
         <form onSubmit={(event) => submitHandler(event)}>
-          <div>
+          <div className="form-group">
             <label>Enter voterId </label>
             <input
+              className="form-control"
               name="voterId"
               ref={voterIDRef}
               onChange={() => changeHandler(voterIDRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter voterIDCard Number </label>
             <input
+              className="form-control"
               name="voterIDCardNo"
               ref={voterIDCardNoRef}
               onChange={() => changeHandler(voterIDCardNoRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
           <label>Enter firstName </label>
             <input
+            className="form-control"
               name="firstName"
               ref={firstNameRef}
               onChange={() => changeHandler(firstNameRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter lastName </label>
             <input
+            className="form-control"
               name="lastName"
               ref={lastNameRef}
               onChange={() => changeHandler(lastNameRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter gender </label>
             <select
+                className="form-control"
                 name="gender"
                 type="text"
                 ref={genderRef}
@@ -129,15 +132,16 @@ export default function AddNewVoter() {
             </select>
           </div>
 
-          <div>
+          <div className="form-group">
             <label>Enter password </label>
             <input
+            className="form-control"
               name="password"
               ref={passwordRef}
               onChange={() => changeHandler(passwordRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter reservationCategory </label>
             <input
               name="reservationCategory"
@@ -145,71 +149,79 @@ export default function AddNewVoter() {
               onChange={() => changeHandler(reservationCategoryRef)}
             />
           </div>
-          <div>
+          <div  className="form-group">
             <label>Enter mobileNo </label>
             <input
+            className="form-control"
               name="mobileNo"
               ref={mobileNoRef}
               onChange={() => changeHandler(mobileNoRef)}
             />
           </div>
-          <div>
+          <div  className="form-group">
             <label>Enter emailID </label>
             <input
+            className="form-control"
               name="emailID"
               ref={emailIDRef}
               onChange={() => changeHandler(emailIDRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter address1 </label>
             <input
+            className="form-control"
               name="address1"
               ref={address1Ref}
               onChange={() => changeHandler(address1Ref)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter address2 </label>
             <input
+            className="form-control"
               name="address2"
               ref={address2Ref}
               onChange={() => changeHandler(address2Ref)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter mandal</label>
             <input
+            className="form-control"
               name="mandal"
               ref={mandalRef}
               onChange={() => changeHandler(mandalRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter district </label>
             <input
+            className="form-control"
               name="district"
               ref={districtRef}
               onChange={() => changeHandler(districtRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter pincode </label>
             <input
+            className="form-control"
               name="pincode"
               ref={pincodeRef}
               onChange={() => changeHandler(pincodeRef)}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter cooperativeSociety </label>
             <input
+            className="form-control"
               name="cooperativeSociety"
               ref={cooperativeSocietyRef}
               onChange={() => changeHandler(cooperativeSocietyRef)}
             />
             <br />
-            <button type="submit">Cast new vote</button>
+            <button type="submit">Register</button>
           </div>
         </form>
         

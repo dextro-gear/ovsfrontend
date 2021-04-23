@@ -1,10 +1,7 @@
 export default function DisplayVoter({voter}){
 
     return(
-        <span>
-
-            voterId is {voter.voterId} <br/> 
-            voterIDCardNo is {voter.candidateId} <br/> 
+        <div>
             firstName is {voter.societyId}
             lastName is {voter.societyId}
             gender is {voter.societyId}
@@ -17,7 +14,7 @@ export default function DisplayVoter({voter}){
             district is {voter.societyId}
             pincode is {voter.societyId}
             cooperativeSociety is {voter.societyId}
-        </span>
+        </div>
     )
 
 }
