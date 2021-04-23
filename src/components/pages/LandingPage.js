@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CastNewVote from "./votes/CastNewVote";
+import AddNewVoter from "./voter/AddNewVoter";
 
 class LandingPage extends Component {
 
@@ -23,7 +24,7 @@ class LandingPage extends Component {
                 </div>
                 <div className="container text-center px-4 py-5">
                     <div className="container">
-                    <Link className="btn btn-danger m-1 w-25 red-btn" id="one">
+                    <Link to="/AddNewVoter" className="btn btn-danger m-1 w-25 red-btn" id="one">
                         <i class="fas fa-fist-raised"></i> Register as a voter
                     </Link>
                         <Link to="/castVote" className="btn btn-warning m-1 w-25 orange-btn">Cast your vote</Link>
