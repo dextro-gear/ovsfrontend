@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import CastNewVote from "./votes/CastNewVote";
+import CastNewVote from "../votes/CastNewVote";
 
 class LandingPage extends Component {
 

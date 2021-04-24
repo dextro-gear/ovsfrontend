@@ -31,11 +31,10 @@ export default function CastNewVote() {
       candidateId: undefined,
       societyId: undefined,
       candidateFirstName: undefined,
-      candidateLastName: undefined,
     },
   };
 
-  const response = { vote: undefined, errMsg: undefined };
+  const response = { vote: mockVote, errMsg: undefined };
 
   const [state, setNewState] = useState(initialState);
 
@@ -76,7 +75,7 @@ export default function CastNewVote() {
 validation method for voterId
 */
   const validateVoterId = (voterId) => {
-    if (voterId.length < 0) {
+    if (voterId < 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
@@ -85,7 +84,7 @@ validation method for voterId
 validation method for candidateId
 */
   const validateCandidateId = (candidateId) => {
-    if (candidateId.length < 0) {
+    if (candidateId < 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
@@ -104,7 +103,7 @@ validation method for candidate first name
 validation method for societyId
 */
   const validateSocietyId = (societyId) => {
-    if (societyId.length < 0) {
+    if (societyId < 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
@@ -120,12 +119,11 @@ validation method for societyId
             name="voterId"
             ref={voterIdRef}
             onChange={() => changeHandler(voterIdRef)}
+            required
           />
         </div>
         {state.validations.voterId ? (
-          <div>
-            <div className={commonStyle.error}>{state.validations.voterId}</div>
-          </div>
+          <div className={commonStyle.error}>{state.validations.voterId}</div>
         ) : (
           ""
         )}
@@ -136,13 +134,12 @@ validation method for societyId
             name="candidateId"
             ref={candidateIdRef}
             onChange={() => changeHandler(candidateIdRef)}
+            required
           />
         </div>
         {state.validations.candidateId ? (
-          <div>
-            <div className={commonStyle.error}>
-              {state.validations.candidateId}
-            </div>
+          <div className={commonStyle.error}>
+            {state.validations.candidateId}
           </div>
         ) : (
           ""
@@ -154,13 +151,12 @@ validation method for societyId
             name="candidateFirstName"
             ref={candidateFirstNameRef}
             onChange={() => changeHandler(candidateFirstNameRef)}
+            required
           />
         </div>
         {state.validations.candidateFirstName ? (
-          <div>
-            <div className={commonStyle.error}>
-              {state.validations.candidateFirstName}
-            </div>
+          <div className={commonStyle.error}>
+            {state.validations.candidateFirstName}
           </div>
         ) : (
           ""
@@ -181,13 +177,10 @@ validation method for societyId
             name="societyId"
             ref={societyIdRef}
             onChange={() => changeHandler(societyIdRef)}
+            required
           />
           {state.validations.voterId ? (
-            <div>
-              <div className={commonStyle.error}>
-                {state.validations.voterId}
-              </div>
-            </div>
+            <div className={commonStyle.error}>{state.validations.voterId}</div>
           ) : (
             ""
           )}
@@ -201,7 +194,7 @@ validation method for societyId
       {response.vote ? (
         <div>
           <h2>New vote added successfully</h2>
-          <DisplayVote vote={response.newVote} />
+          <DisplayVote vote={response.vote} />
         </div>
       ) : (
         ""
