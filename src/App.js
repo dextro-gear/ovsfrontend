@@ -13,6 +13,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/castVote" component={CastNewVote} />
         <Route exact path="/result" component={ElectionResultPage} />
+        <Route exact path="/byVoterId" component={GetVoteByVoterId}/>
       </Switch>
     </Router>
   );
