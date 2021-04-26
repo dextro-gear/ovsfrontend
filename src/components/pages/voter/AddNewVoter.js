@@ -21,8 +21,6 @@ export default function AddNewVoter() {
     };
     */
 
-    const voterIDRef = React.createRef();
-    const voterIDCardNoRef = React.createRef();
     const firstNameRef = React.createRef();
     const lastNameRef = React.createRef();
     const genderRef = React.createRef();
@@ -57,18 +55,21 @@ export default function AddNewVoter() {
         formStatus: "",
       };
 
-      const [state, setNewState] = useState(initialState);
+      const [currentState, setNewState] = useState(initialState);
+
+      const response = { voter: undefined, errMsg: undefined };
+
 
       const submitHandler = (event) => {
         event.preventDefault();
-        setNewState({ ...state, formStatus: "form submitted successfully" });
+        setNewState({ ...currentState, formStatus: "form submitted successfully" });
       };
 
       const changeHandler = (ref) => {
         const fieldName = ref.current.name;
         const fieldValue = ref.current.value;
         const newState = {
-          ...state,
+          ...currentState,
           [fieldName]: fieldValue,
           newVoter: undefined,
           errMsg: undefined,
@@ -81,24 +82,6 @@ export default function AddNewVoter() {
 
         <div>
         <form onSubmit={(event) => submitHandler(event)}>
-          <div className="form-group">
-            <label>Enter voterId </label>
-            <input
-              className="form-control"
-              name="voterId"
-              ref={voterIDRef}
-              onChange={() => changeHandler(voterIDRef)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Enter voterIDCard Number </label>
-            <input
-              className="form-control"
-              name="voterIDCardNo"
-              ref={voterIDCardNoRef}
-              onChange={() => changeHandler(voterIDCardNoRef)}
-            />
-          </div>
           <div className="form-group">
           <label>Enter firstName </label>
             <input
@@ -227,47 +210,18 @@ export default function AddNewVoter() {
         
         
         
-        <h2>{state.formStatus}</h2>
-        <h2>Voter Details</h2><br/>
-
-        <p>voterId is :{state.voterId}</p>
-        <br />
-        <p>voterIDCardNo is :{state.voterIDCardNo}</p>
-        <br />
-        <p>firstName is :{state.firstName}</p>
-        <br />
-        <p>lastName is :{state.lastName}</p>
-        <br />
-        <p>gender is :{state.gender}</p>
-        <br />
-        <p>reservationCategory is :{state.reservationCategory}</p>
-        <br />
-        <p>mobileNo is :{state.mobileNo}</p>
-        <br />
-        <p>emailID is :{state.emailID}</p>
-        <br />
-        <p>address1 is :{state.address1}</p>
-        <br />
-        <p>address2 is :{state.address2}</p>
-        <br />
-        <p>mandal is :{state.mandal}</p>
-        <br />
-        <p>district is :{state.district}</p>
-        <br />
-        <p>pincode is :{state.pincode}</p>
-        <br />
-        <p>cooperativeSociety is :{state.cooperativeSociety}</p>
+        <h2>{currentState.formStatus}</h2>
         
-        {state.newVoter ? (
+        {response.newVoter ? (
             <div>
                 <h2>New voter added successfully</h2>
-                <DisplayVoter voter={state.newVoter} />
+                <DisplayVoter voter={response.newVoter} />
             </div>
         ) : ("")}
         
-        {state.errMsg ? (
+        {response.errMsg ? (
             <div>
-            <p>Request was not successful {state.errMsg} </p>
+            <p>Request was not successful {response.errMsg} </p>
             </div>
         ) : ("")}
     </div>

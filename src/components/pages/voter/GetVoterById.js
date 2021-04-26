@@ -1,9 +1,29 @@
 import React, { Component } from "react";
 import DisplayVoter from "./DisplayVoter";
-import VoterService from "./VoterService";
+import VoterService from "../../../services/VoterService";
 
 
 class GetVoterById extends Component {
+
+    /*  let voter = {
+        voterId: "1",
+        voterIDCardNo : "1A",
+        firstName: "Ritik",
+        lastName: "Singh",
+        gender: "Male",
+        password:"qwerty",
+        reservationCategory:"A",
+        mobileNo:"9589235478",
+        emailID:"abc@gmail.com",
+        address1:"house no.-1",
+        address2: "Mathura",
+        mandal: "xyz",
+        district: "abc",
+        pincode: "123456",
+        cooperativeSociety: "1",
+    };
+    */
+
     idRef = React.createRef();
     service = new VoterService();
     initialState={voter:undefined, error:undefined};
