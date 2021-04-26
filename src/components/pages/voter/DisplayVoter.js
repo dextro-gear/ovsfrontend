@@ -1,18 +1,19 @@
-export default function DisplayVoter({voter}){
+export default function DisplayVoter({voters}){
 
-    let {gender, reservationCategory,mobileNo,emailID,address1,address2,mandal,district,pincode,cooperativeSociety} = voter;
     return(
         <div>
-            gender is {voter.gender}
-            reservationCategory is {voter.reservationCategory}
-            mobileNo is {voter.mobileNo}
-            emailID is {voter.emailID}
-            address1 is {voter.address1}
-            address2 is {voter.address2}
-            mandal is {voter.mandal}
-            district is {voter.district}
-            pincode is {voter.pincode}
-            cooperativeSociety is {voter.cooperativeSociety}
+            first name is {voters.firstName}
+            last name is {voters.lastName}
+            gender is {voters.gender}
+            reservationCategory is {voters.reservationCategory}
+            mobileNo is {voters.mobileNo}
+            emailID is {voters.emailID}
+            address1 is {voters.address1}
+            address2 is {voters.address2}
+            mandal is {voters.mandal}
+            district is {voters.district}
+            pincode is {voters.pincode}
+            cooperativeSociety is {voters.cooperativeSociety}
         </div>
     );
 

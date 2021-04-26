@@ -1,17 +1,15 @@
 import axios from 'axios';
+
 const baseUrl="http://localhost:8585";
-
-
-export default class VoterService {
     
 
-    fetchVoterbyId(id){
-        const url=this.baseUrl+"/voter/byid/"+id ; 
+    function fetchVoter(id){
+        const url=baseUrl+"/voter/byid/"+id ; 
         const promise=axios.get(url);
         return promise;
       }
 
-    addVoter(voter) {
+    function addVoter(voter) {
       const url = baseUrl + "/voter/addVoter";
       let requestData = {
 
@@ -33,9 +31,16 @@ export default class VoterService {
       return promise;
     }
 
-    displayVoter() {
+      function displayVoter() {
       const url = baseUrl + "/voter/display";
       const promise =axios.get(url);
       return promise;
     }
-}
+
+    function fetchAll(){
+      const url = baseUrl + "/customers";
+      const promise = axios.get(url);
+      return promise;
+  }
+
+export {fetchVoter, addVoter, displayVoter, fetchAll};
