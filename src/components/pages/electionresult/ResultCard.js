@@ -21,7 +21,9 @@ class ResultCard extends Component {
             {this.props.candidate.result}
           </div>
           <div className="card-body">
-            <h5 className="card-title">{this.props.candidate.candidateName}</h5>
+            <h5 className="card-title display-6 fs-3">
+              {this.props.candidate.candidateName}
+            </h5>
             <p className="card-text">
               Candidate ID: {this.props.candidate.candidateID}
               <br />
@@ -30,7 +32,9 @@ class ResultCard extends Component {
               Votes Obtained: {this.props.candidate.totalCandidateVotes}
               <br />
               Voting Percentage:{" "}
-              {this.props.candidate.candidatesVotesPercentage}
+              {this.props.candidate.candidatesVotesPercentage}%
+              <br />
+              Society: {this.props.candidate.societyName}
             </p>
           </div>
         </div>

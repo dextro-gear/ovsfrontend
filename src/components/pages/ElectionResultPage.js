@@ -75,7 +75,7 @@ class ElectionResultPage extends Component {
           <h1 className="display-6">Search for result by candidate</h1>
           <div className="container-fluid px-0 mt-4">
             <div className="row row-cols-2 align-items-stretch">
-              <div className="col col-auto">
+              <div className="col col-3">
                 <form className="form-floating" onSubmit={this.onFormSubmit}>
                   <input
                     type="number"
@@ -95,23 +95,7 @@ class ElectionResultPage extends Component {
                 </form>
               </div>
               {this.state.isFormSubmitted ? (
-                <div className="col">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        {this.mockCandidate.candidateName}
-                      </h5>
-                      <p className="card-text">
-                        Candidate ID: {this.state.candidateID}
-                        <br />
-                        Nomination Form No:{" "}
-                        {this.mockCandidate.nominationFormNo}
-                        <br />
-                        Voting Percentage: {this.mockCandidate.votingPercent}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <ResultCard candidate={this.mockCandidate} />
               ) : null}
             </div>
           </div>
