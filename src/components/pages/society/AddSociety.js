@@ -1,7 +1,19 @@
 import React, { useState } from "react";
+import DisplaySociety from "./DisplaySociety";
+import { event } from "jquery";
 
 
 export default function AddSociety() {
+  const society = {
+    societyName :"anj",
+    headOfSociety :"bhn",
+    village :"njm",
+    mandal :"sfgd",
+    district:213,
+    pincode:598,
+  };
+
+
   const societyNameRef = React.createRef();
   const headOfSocietyRef = React.createRef();
   const villageRef = React.createRef();
@@ -17,6 +29,7 @@ export default function AddSociety() {
     district: undefined,
     pincode: undefined,
     errMsg: undefined,
+    newSociety:undefined,
     formStatus: "",
   };
 
@@ -24,96 +37,105 @@ export default function AddSociety() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setState({ ...state, formStatus: "Form Submiyted Successfully" });
+    setState({ ...state, formStatus: "Form Submitted Successfully" });
+    setState({...state,newSociety:{societyName:state.societyName,headOfSociety:state.headOfSociety,village:state.village,mandal:state.mandal,district:state.district,pincode:state.pincode}})
   };
 
-  const setFieldState = (ref) => {
+  const changeHandler = (ref) => {
     const fieldName = ref.current.name;
     const fieldValue = ref.current.value;
     const newState = {
       ...state,
       [fieldName]: fieldValue,
+      newSociety:undefined,
+      errMsg:undefined,
     };
     setState(newState);
   };
   return (
     <div>
       <form onSubmit={(event) => submitHandler(event)}>
-        <div class="col-md-4">
-          <label for="title" class="form-label">
+        <div className="col-md-4">
+          <label for="title" className="form-label">
             Society Name
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
+            name = "societyName"
             ref={societyNameRef}
-            onChange={() => setFieldState(societyNameRef)}
+            onChange={() => changeHandler(societyNameRef)}
           />
         </div>
 
-        <div class="col-md-4">
-          <label for="title" class="form-label">
+        <div className="col-md-4">
+          <label for="title" className="form-label">
             Head of Society
           </label>
           <input
             type="text"
-            class="form-control "
+            className="form-control "
+            name = "headOfSociety"
             ref={headOfSocietyRef}
-            onChange={() => setFieldState(headOfSocietyRef)}
+            onChange={() => changeHandler(headOfSocietyRef)}
           />
 
-          <div class="col-md-8">
-            <label for="validationServer02" class="form-label">
+          <div className="col-md-8">
+            <label for="validationServer02" className="form-label">
               Village
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              name = "village"
               ref={villageRef}
-              onChange={() => setFieldState(villageRef)}
+              onChange={() => changeHandler(villageRef)}
             />
           </div>
 
-          <div class="col-md-8">
-            <label for="title" class="form-label">
+          <div className="col-md-8">
+            <label for="title" className="form-label">
               Mandal
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              name="mandal"
               ref={mandalRef}
-              onChange={() => setFieldState(mandalRef)}
+              onChange={() => changeHandler(mandalRef)}
             />
           </div>
 
-          <div class="col-md-8">
-            <label for="title" class="form-label">
+          <div className="col-md-8">
+            <label for="title" className="form-label">
               District
             </label>
             <input
-              type="number"
-              class="form-control"
+              type="text"
+              className="form-control"
+              name="district"
               ref={districtRef}
-              onChange={() => setFieldState(districtRef)}
+              onChange={() => changeHandler(districtRef)}
             />
           </div>
 
-          <div class="col-md-8">
-            <label for="title" class="form-label">
+          <div className="col-md-8">
+            <label for="title" className="form-label">
               Pincode
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
+              name="pincode"
               ref={pincodeRef}
-              onChange={() => setFieldState(pincodeRef)}
+              onChange={() => changeHandler(pincodeRef)}
             />
           </div>
           <br />
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <button
-              class="btn btn-success me-md-2 btn-border-radius-lg"
-              type="button"
+              className="btn btn-success me-md-2 btn-border-radius-lg"
+              type="submit"
             >
               Submit !
             </button>
@@ -121,7 +143,18 @@ export default function AddSociety() {
         </div>
       </form>
 
-      {state.formStatus ? <h2>Society Added Successfully !</h2> : ""}
+      <h2>{state.formStatus}</h2>
+      
+
+      {state.newSociety?(
+        <div>
+          <h2>Society Added Successfully</h2>
+          <DisplaySociety society={state.newSociety}/>
+        </div>
+      )
+        :("")
+      
+      }
 
       {state.errMsg ? (
         <div>

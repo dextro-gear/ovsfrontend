@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import DisplaySociety from "./society/DisplaySociety";
 import CastNewVote from "./votes/CastNewVote";
 
 class LandingPage extends Component {
+    
 
     constructor(props) {
         super(props);
@@ -33,7 +35,10 @@ class LandingPage extends Component {
                         <Link className="btn btn-dark m-1 w-25 blue-btn">View Election Results</Link>
                     </div>
                 </div>
+                
             </div>
+
+        
         );
     }
 }
