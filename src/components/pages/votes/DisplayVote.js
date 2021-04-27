@@ -1,8 +1,8 @@
 export default function DisplayVote({ vote }) {
   return (
     <div>
-      <h5>voterId is</h5>
-      <p>{vote.voterId}</p>
+      <h5>voteId is</h5>
+      <p>{vote.voteId}</p>
       <h5>candidateId is</h5>
       <p>{vote.candidateId}</p>
       <h5>candidateFirstName is</h5>
