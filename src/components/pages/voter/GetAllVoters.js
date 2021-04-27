@@ -5,13 +5,6 @@ import DisplayVoter from "./DisplayVoter";
 
 export default function GetAllVoters() {
 
-    /*
-        const c1={id:1, name:'shivender',age:21, address:'chennai'};
-        const c2={id:2, name:'raja',age:22, address:'chennai'};
-    
-         const customers=[c1, c2];      
-    
-    */
     const [currentState, setNewState] = useState({ voters: undefined, errMsg: undefined });
 
     const fetchAllVoters = () => {
@@ -25,13 +18,6 @@ export default function GetAllVoters() {
             )
     };
 
-    /**
-     * use effect gets execute when component is mounted and also when component is updated
-     * in this demo we don't want it to execute when component is updated because in usestate we are changing the state
-     *  that means component has got updated and so usestate will get execute again , this will become an infinite cycle
-     * to break this cycle, empty array is passed, now useeffect will be executed only when component is mounted
-     *  and not when it is updated
-     */
     useEffect(fetchAllVoters, []);
 
     console.log("inside getall voters", currentState.voters);
