@@ -7,46 +7,42 @@ import Navbar from "../../Navbar";
 import { addNewVote } from "../../services/VoteService";
 
 export default function CastNewVote() {
-/*  const mockVote = {
+  /*  const mockVote = {
     voterId: 101,
     candidateId: 111,
     
     societyId: 121,
   };
 */
-  const voterIdRef = React.createRef();
+  const voterCardIdRef = React.createRef();
   const candidateIdRef = React.createRef();
-  
+
   const societyIdRef = React.createRef();
 
   const initialState = {
-    voterID: undefined,
+    voterCardID: undefined,
     candidateID: undefined,
     societyID: undefined,
     vote: undefined,
-     errMsg: undefined,
-   
+    errMsg: undefined,
+
     formStatus: "",
     validations: {
-      voterID: undefined,
+      voterCardID: undefined,
       candidateID: undefined,
       societyID: undefined,
-      
     },
   };
-
-
 
   const [state, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
     setNewState({ ...state, formStatus: "form submitted successfully" });
-   if (
-      state.validations.voterID ||
+    if (
+      state.validations.voterCardID ||
       state.validations.candidateID ||
-      state.validations.societyID 
-      
+      state.validations.societyID
     ) {
       return;
     }
@@ -55,20 +51,19 @@ export default function CastNewVote() {
     const promise = addNewVote(data);
     promise
       .then((response) => setNewState({ ...state, vote: response.data }))
-      .catch((error) => setNewState({ ...state, errMsg: error.message}));
+      .catch((error) => setNewState({ ...state, errMsg: error.message }));
   };
 
   const changeHandler = (ref) => {
     const fieldName = ref.current.name;
     const fieldValue = ref.current.value;
     let validationMsg;
-    if (ref === voterIdRef) {
+    if (ref === voterCardIdRef) {
       validationMsg = validateVoterId(fieldValue);
     }
     if (ref === candidateIdRef) {
       validationMsg = validateCandidateId(fieldValue);
     }
-    
 
     if (ref === societyIdRef) {
       validationMsg = validateSocietyId(fieldValue);
@@ -119,12 +114,12 @@ validation method for societyId
       <div className="container">
         <form onSubmit={(event) => submitHandler(event)}>
           <div className="form-group">
-            <label>Enter voterId </label>
+            <label>Enter voterCardId </label>
             <input
               className="form-control"
-              name="voterID"
-              ref={voterIdRef}
-              onChange={() => changeHandler(voterIdRef)}
+              name="voterCardID"
+              ref={voterCardIdRef}
+              onChange={() => changeHandler(voterCardIdRef)}
               required
             />
           </div>
@@ -150,9 +145,7 @@ validation method for societyId
           ) : (
             ""
           )}
-          
-           
-        
+
           <div>
             <label>Enter societyId </label>
             <input

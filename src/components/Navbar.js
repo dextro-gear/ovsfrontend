@@ -54,7 +54,7 @@ class Navbar extends Component {
                   </li>
                 </ul>
               </li>
-              
+
               <li className="nav-item dropdown">
                 <a
                   href="#"
@@ -75,7 +75,6 @@ class Navbar extends Component {
                       cast a new vote
                     </Link>
                   </li>
-                  
                 </ul>
               </li>
             </ul>

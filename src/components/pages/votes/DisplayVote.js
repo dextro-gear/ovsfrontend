@@ -11,6 +11,8 @@ export default function DisplayVote({ vote }) {
       <p>{vote.candidateLastName}</p>
       <h5>societyId is</h5>
       <p>{vote.societyId}</p>
+      <h5>VotingDateTime when vote is casted is</h5>
+      <p>{vote.votingDateTime}</p>
     </div>
   );
 }

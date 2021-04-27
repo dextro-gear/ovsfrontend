@@ -3,10 +3,10 @@ import LandingPage from "./components/pages/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import CastNewVote from "./components/pages/votes/CastNewVote";
-import ViewVoteDetailsByVoterId from "./components/pages/votes/ViewVoteDetailsByVoterId"
+import ViewVoteDetailsByVoterCardId from "./components/pages/votes/ViewVoteDetailsByVoterCardId"
 import "./App.css";
 import ElectionResultPage from "./components/pages/ElectionResultPage";
-import { addNewVote, searchByVoterId } from "./components/services/VoteService";
+import { addNewVote, searchByVoterCardId } from "./components/services/VoteService";
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
   .catch(error=>console.log("unsuccessful",error.message));
   */
 const id=4;
-  const  promise = searchByVoterId(id);
+  const  promise = searchByVoterCardId(id);
   promise.then(response=>console.log("success",response.data))
   .catch(error=>console.log("unsuccessful",error.response.data));
  return (
@@ -33,7 +33,7 @@ const id=4;
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/castVote" component={CastNewVote} />
         <Route exact path="/result" component={ElectionResultPage} />
-        <Route exact path="/byVoterId" component={ViewVoteDetailsByVoterId} />
+        <Route exact path="/byVoterId" component={ViewVoteDetailsByVoterCardId} />
       </Switch>
     </Router>
   );
