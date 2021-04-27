@@ -3,7 +3,6 @@ import { searchByVoterCardId } from "../../services/VoteService";
 import DisplayVote from "./DisplayVote";
 import Navbar from "../../Navbar";
 
-
 export default function ViewVoteDetailsByVoterCardId() {
   const voterCardIdRef = React.createRef();
 
@@ -15,13 +14,6 @@ export default function ViewVoteDetailsByVoterCardId() {
 
   const [currentState, setNewState] = useState(initialState);
 
-  /* const submitHandler = (event) => {
-    event.preventDefault();
-    console.log("current state is:", currentState);
-
-    
-  };
-*/
   const fetchVoteDetails = (event) => {
     event.preventDefault();
     const id = currentState.voterCardID;
@@ -35,19 +27,11 @@ export default function ViewVoteDetailsByVoterCardId() {
       );
   };
 
-  // useEffect(fetchVoteDetailsOnRender);
-
   const changeHandler = () => {
-    //const fieldName = ref.current.name;
-    //const fieldValue = ref.current.value;
-    //const newState = { ...currentState, [fieldName]: fieldValue };
-    //setNewState(newState);
     const idValue = voterCardIdRef.current.value;
     const newState = {
       ...currentState,
       voterCardID: idValue,
-      //vote: undefined,
-      //errMsg: undefined,
     };
     setNewState(newState);
   };

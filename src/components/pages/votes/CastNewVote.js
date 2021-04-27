@@ -7,13 +7,7 @@ import Navbar from "../../Navbar";
 import { addNewVote } from "../../services/VoteService";
 
 export default function CastNewVote() {
-  /*  const mockVote = {
-    voterId: 101,
-    candidateId: 111,
-    
-    societyId: 121,
-  };
-*/
+  
   const voterCardIdRef = React.createRef();
   const candidateIdRef = React.createRef();
 
@@ -59,7 +53,7 @@ export default function CastNewVote() {
     const fieldValue = ref.current.value;
     let validationMsg;
     if (ref === voterCardIdRef) {
-      validationMsg = validateVoterId(fieldValue);
+      validationMsg = validateVoterCardId(fieldValue);
     }
     if (ref === candidateIdRef) {
       validationMsg = validateCandidateId(fieldValue);
@@ -82,8 +76,8 @@ export default function CastNewVote() {
   /*
 validation method for voterId
 */
-  const validateVoterId = (voterId) => {
-    if (voterId < 0) {
+  const validateVoterCardId = (voterCardId) => {
+    if (voterCardId< 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
@@ -91,8 +85,8 @@ validation method for voterId
   /*
 validation method for candidateId
 */
-  const validateCandidateId = (candidateId) => {
-    if (candidateId < 0) {
+  const validateCandidateId = (candidateID) => {
+    if (candidateID < 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
@@ -101,8 +95,8 @@ validation method for candidateId
   /*
 validation method for societyId
 */
-  const validateSocietyId = (societyId) => {
-    if (societyId < 0) {
+  const validateSocietyId = (societyID) => {
+    if (societyID < 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
