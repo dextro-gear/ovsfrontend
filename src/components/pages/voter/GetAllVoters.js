@@ -12,8 +12,8 @@ export default function GetAllVoters() {
         const promise = fetchAll();
         promise.then(
             response => setNewState({ voters: response.data, errMsg: undefined })
-        ).
-            catch(
+        )
+            .catch(
                 error => setNewState({ voters: undefined, errMsg: error.message })
             )
     };

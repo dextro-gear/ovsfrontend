@@ -38,7 +38,7 @@ const baseUrl="http://localhost:8585";
     }
 
     function fetchAll(){
-      const url = baseUrl + "/customers";
+      const url = baseUrl + "/voters";
       const promise = axios.get(url);
       return promise;
   }
