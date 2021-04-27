@@ -74,7 +74,7 @@ export default function CastNewVote() {
     setNewState(newState);
   };
   /*
-validation method for voterId
+validation method for voterCardId
 */
   const validateVoterCardId = (voterCardId) => {
     if (voterCardId< 0) {
