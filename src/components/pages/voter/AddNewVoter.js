@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayVoter from "./DisplayVoter";
+import { addVoter } from "../../../services/VoterService";
 
 export default function AddNewVoter() {
    /* const voter = {
@@ -49,7 +50,7 @@ export default function AddNewVoter() {
         mandal: undefined,
         district: undefined,
         pincode: undefined,
-        cooperativeSociety: undefined,
+        societyId: undefined,
         newVoter: undefined,
         errMsg: undefined,
         formStatus: "",
@@ -63,6 +64,16 @@ export default function AddNewVoter() {
       const submitHandler = (event) => {
         event.preventDefault();
         setNewState({ ...currentState, formStatus: "form submitted successfully" });
+        const societyIdValue = parseInt(currentState.societyId);
+        const data= {...currentState,societyId: societyIdValue};
+        const promise= addVoter(data);
+        promise.then(response=>{
+          console.log("response fetched", response.data);
+          setNewState({...currentState, newVoter: response.data});
+        }).catch(error=>{
+          console.log("error", error.message);
+          setNewState({...currentState, errMsg: error.message});
+        })
       };
 
       const changeHandler = (ref) => {
@@ -74,6 +85,7 @@ export default function AddNewVoter() {
           newVoter: undefined,
           errMsg: undefined,
         };
+        console.log("fieldName="+fieldName+ " fieldValue="+fieldValue);
 
         setNewState(newState);
         };
@@ -108,7 +120,7 @@ export default function AddNewVoter() {
                 type="text"
                 ref={genderRef}
                 onChange={() => changeHandler(genderRef)}>
-                <option disabled selected>Select Gender</option>
+                <option disabled>Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="others">Others</option>
@@ -199,7 +211,7 @@ export default function AddNewVoter() {
             <label>Enter cooperativeSociety </label>
             <input
             className="form-control"
-              name="cooperativeSociety"
+              name="societyId"
               ref={cooperativeSocietyRef}
               onChange={() => changeHandler(cooperativeSocietyRef)}
             />
@@ -212,16 +224,16 @@ export default function AddNewVoter() {
         
         <h2>{currentState.formStatus}</h2>
         
-        {response.newVoter ? (
+        {currentState.newVoter ? (
             <div>
                 <h2>New voter added successfully</h2>
-                <DisplayVoter voter={response.newVoter} />
+                <DisplayVoter voter={currentState.newVoter} />
             </div>
         ) : ("")}
         
-        {response.errMsg ? (
+        {currentState.errMsg ? (
             <div>
-            <p>Request was not successful {response.errMsg} </p>
+            <p>Request was not successful {currentState.errMsg} </p>
             </div>
         ) : ("")}
     </div>

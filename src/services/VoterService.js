@@ -4,35 +4,21 @@ const baseUrl="http://localhost:8585";
     
 
     function fetchVoter(id){
-        const url=baseUrl+"/voter/byid/"+id ; 
+        const url=baseUrl+"/voters/byid/"+id ; 
         const promise=axios.get(url);
         return promise;
       }
 
-    function addVoter(voter) {
-      const url = baseUrl + "/voter/addVoter";
-      let requestData = {
-
-            firstName: voter.firstName,
-            lastName: voter.lastName,
-            gender: voter.gender,
-            reservationCategory: voter.reservationCategory,
-            mobileNo: voter.mobileNo,
-            emailID: voter.emailID,
-            address1: voter.address1,
-            address2: voter.address2,
-            mandal:voter.mandal,
-            district: voter.district,
-            pincode: voter.pincode,
-            cooperativeSociety: voter.cooperativeSociety
-      };
-      console.log("inside addVoter service", requestData);
-      const promise = axios.post(url, requestData);
+    function addVoter(data) {
+      const url = baseUrl + "/voters/add";
+      
+      console.log("inside addVoter service", data);
+      const promise = axios.post(url, data);
       return promise;
     }
 
       function displayVoter() {
-      const url = baseUrl + "/voter/display";
+      const url = baseUrl + "/voters/display";
       const promise =axios.get(url);
       return promise;
     }
