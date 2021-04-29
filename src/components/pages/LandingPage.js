@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
-import CastNewVote from "./votes/CastNewVote";
 
 class LandingPage extends Component {
   constructor(props) {
