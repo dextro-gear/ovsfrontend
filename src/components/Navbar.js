@@ -62,17 +62,45 @@ class Navbar extends Component {
                   data-bs-toggle="dropdown"
                   role="button"
                 >
-                  VoteService
+                  Vote Service
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="/byVoterId">
-                      Fetch vote details by voterId
+                      Fetch vote details by voterID
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/castVote">
-                      cast a new vote
+                      Cast a new vote
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              <li className="nav-item dropdown">
+                <a
+                  href="#"
+                  className="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  role="button"
+                >
+                  Society Service
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to="/society">
+                      Society Homepage
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/addSociety">
+                      Add a new Society
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/societyById">
+                      Get Society by ID
                     </Link>
                   </li>
                 </ul>
