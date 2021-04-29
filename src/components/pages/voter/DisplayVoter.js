@@ -2,19 +2,18 @@ export default function DisplayVoter({voter}){
 
     return(
         <div>
-            voter ID card no is {voter.voterIDCardNo}
-            first name is {voter.firstName}
-            last name is {voter.lastName}
-            gender is {voter.gender}
-            reservationCategory is {voter.reservationCategory}
-            mobileNo is {voter.mobileNo}
-            emailID is {voter.emailID}
-            address1 is {voter.address1}
-            address2 is {voter.address2}
-            mandal is {voter.mandal}
-            district is {voter.district}
-            pincode is {voter.pincode}
+            <p>voter ID card no is <b>{voter.voterIDCardNo}</b></p>
+            <p>first name is {voter.firstName}</p>
+            <p>last name is {voter.lastName}</p>
+            <p>gender is {voter.gender}</p>
+            <p>reservationCategory is {voter.reservationCategory}</p>
+            <p>mobileNo is {voter.mobileNo}</p>
+            <p>emailID is {voter.emailID}</p>
+            <p>address1 is {voter.address1}</p>
+            <p>address2 is {voter.address2}</p>
+            <p>mandal is {voter.mandal}</p>
+            <p>district is {voter.district}</p>
+            <p>pincode is {voter.pincode}</p>
         </div>
     );
-
 }

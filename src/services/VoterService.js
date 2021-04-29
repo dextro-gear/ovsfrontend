@@ -4,7 +4,7 @@ const baseUrl="http://localhost:8585";
     
 
     function fetchVoter(id){
-        const url=baseUrl+"/voters/byid/"+id ; 
+        const url=baseUrl+"/voters/"+id ; 
         const promise=axios.get(url);
         return promise;
       }

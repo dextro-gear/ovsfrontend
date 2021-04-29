@@ -6,14 +6,14 @@ import {fetchVoter} from "../../../services/VoterService";
 export default function GetVoterById() {
 
     const idRef = React.createRef();
-    const initialState={ id:undefined, voter:undefined, errMsg:undefined };
+    const initialState={ cardid:undefined, voter:undefined, errMsg:undefined };
 
     const [currentState, setNewState] = useState(initialState);
 
     const submitHandler = (event) => {
         event.preventDefault();
         console.log("current state", currentState);
-        const promise = fetchVoter(currentState.id);
+        const promise = fetchVoter(currentState.cardid);
         const successFun = (response) => {
             const newState = { ...currentState, voter: response.data };
             setNewState(newState);
@@ -26,23 +26,23 @@ export default function GetVoterById() {
 
         promise.then(successFun).catch(errFun);
 
-    }
+    };
 
     const setFieldState = () => {
         const idValue = idRef.current.value;
-        const newState = { ...currentState, id: idValue, voter: undefined, errMsg: undefined };
+        const newState = { ...currentState, cardid: idValue, voter: undefined, errMsg: undefined };
         setNewState(newState);
-    }
+    };
 
     return (
         <div>
-            <h1> Get voter details by id</h1>
+            <h1> Get voter details by cardid</h1>
 
             <div className={commonStyle.content}>
                 <form onSubmit={submitHandler} className={commonStyle.content}>
 
                     <div className="form-group">
-                        <label>Enter id</label>
+                        <label>Enter cardid</label>
 
                         <input name="id" type="number" ref={idRef} onChange={setFieldState} className="form-control" />
 
