@@ -1,15 +1,8 @@
-/* .red-btn {
-  background-color: red;
+.btn {
+  font-size: 1.1rem;
 }
 
-.orange-btn {
-  background-color: orange;
+.btn i {
+  font-size: 2rem;
+  margin-right: 0.5rem;
 }
-
-.green-btn {
-  background-color: lime;
-}
-
-.blue-btn {
-  background-color: mediumblue;
-} */
