@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark py-3 px-4">

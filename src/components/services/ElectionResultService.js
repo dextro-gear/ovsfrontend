@@ -3,30 +3,18 @@ import axios from "axios";
 var serverURL = "http://localhost:8585/results";
 
 function getElectionResult() {
-  var responseData = axios
-    .get(serverURL + "/electionresult")
-    .then((response) => response.data)
-    .catch((error) => console.log(error));
-
-  return responseData;
+  var response = axios.get(serverURL + "/electionresult");
+  return response;
 }
 
 function getResultByCandidateID(candidateID) {
-  var responseData = axios
-    .get(serverURL + "/bycandidate/" + candidateID)
-    .then((response) => response.data)
-    .catch((error) => console.log(error));
-
-  return responseData;
+  var response = axios.get(serverURL + "/bycandidate/" + candidateID);
+  return response;
 }
 
 function getCurrentWinningCandidate() {
-  var responseData = axios
-    .get(serverURL + "/winner")
-    .then((response) => response.data)
-    .catch((error) => console.log(error));
-
-  return responseData;
+  var response = axios.get(serverURL + "/winner");
+  return response;
 }
 
 export {

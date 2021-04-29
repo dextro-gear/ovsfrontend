@@ -32,7 +32,7 @@ class ResultCard extends Component {
               Votes Obtained: {this.props.candidate.totalCandidateVotes}
               <br />
               Voting Percentage:{" "}
-              {this.props.candidate.candidatesVotesPercentage}%
+              {this.props.candidate.candidatesVotesPercentage * 100}%
               <br />
               Society: {this.props.candidate.societyName}
             </p>

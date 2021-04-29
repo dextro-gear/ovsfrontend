@@ -1,10 +1,9 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Link, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import AddNewVoter from "./components/pages/voter/AddNewVoter";
-import DisplayVoter from "./components/pages/voter/DisplayVoter";
 import GetVoterById from "./components/pages/voter/GetVoterById";
 import SocietyHome from "./components/pages/society/SocietyHome";
 import DisplaySociety from "./components/pages/society/DisplaySociety";
