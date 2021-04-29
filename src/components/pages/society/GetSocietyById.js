@@ -25,6 +25,7 @@ export default function GetSocietyById(){
   const submitHandler= (event)=> {
     event.preventDefault();
     console.log("Current State",currentState);
+    
     const promise = fetchSociety(currentState.id);
     const successFun = (response)=>{
       const newState = {...currentState, society: response.data};
@@ -42,9 +43,6 @@ export default function GetSocietyById(){
     const newState = {...currentState, id:idValue, society :undefined,errMsg:undefined };
     setNewState(newState);
   }
-  
-
-  
     return (
       <div>
         <h3>
@@ -58,10 +56,11 @@ export default function GetSocietyById(){
               type="number"
               ref={idRef}
               onChange={setFieldState}
+              className="form-control"
             />
           </div>
           <div className="justify-content-md-centre">
-            <button className="btn btn-success " type="button">
+            <button className="btn btn-success " type="submit">
               Get Society !
             </button>
           </div>

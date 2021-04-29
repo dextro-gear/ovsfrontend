@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import DisplaySociety from "./DisplaySociety";
 import { event } from "jquery";
-
+import { addSociety } from "../../../service/SocietyService";
 
 export default function AddSociety() {
-  const society = {
-    societyName :"anj",
-    headOfSociety :"bhn",
-    village :"njm",
-    mandal :"sfgd",
-    district:213,
-    pincode:598,
-  };
-
+  // const society = {
+  //   societyName :"anj",
+  //   headOfSociety :"bhn",
+  //   village :"njm",
+  //   mandal :"sfgd",
+  //   district:213,
+  //   pincode:598,
+  // };
 
   const societyNameRef = React.createRef();
   const headOfSocietyRef = React.createRef();
@@ -29,72 +28,85 @@ export default function AddSociety() {
     district: undefined,
     pincode: undefined,
     errMsg: undefined,
-    newSociety:undefined,
-    formStatus: "",
+    newSociety: undefined,
+    formStatus: false,
   };
 
-  const [state, setState] = useState(initialState);
+  const [currentState, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setState({ ...state, formStatus: "Form Submitted Successfully" });
-    setState({...state,newSociety:{societyName:state.societyName,headOfSociety:state.headOfSociety,village:state.village,mandal:state.mandal,district:state.district,pincode:state.pincode}})
+
+    setNewState({...currentState, formStatus:true});
+    
+
+
+    let data = { ...currentState };
+    const promise = addSociety(data);
+    promise
+    .then((request)=>
+      setNewState({...currentState, newSociety : request.data})
+      )
+    .catch((error)=>
+      setNewState({...currentState,errMsg:error.data})
+      );
   };
+     
 
   const changeHandler = (ref) => {
     const fieldName = ref.current.name;
     const fieldValue = ref.current.value;
     const newState = {
-      ...state,
+      ...currentState,
       [fieldName]: fieldValue,
-      newSociety:undefined,
-      errMsg:undefined,
+      newSociety: undefined,
+      errMsg: undefined,
     };
-    setState(newState);
+    setNewState(newState);
   };
   return (
     <div>
       <form onSubmit={(event) => submitHandler(event)}>
         <div className="col-md-4">
-          <label for="title" className="form-label">
+          <label htmlFor="title" className="form-label">
             Society Name
           </label>
           <input
             type="text"
             className="form-control"
-            name = "societyName"
+            name="societyName"
             ref={societyNameRef}
             onChange={() => changeHandler(societyNameRef)}
           />
         </div>
 
         <div className="col-md-4">
-          <label for="title" className="form-label">
+          <label htmlFor="title" className="form-label">
             Head of Society
           </label>
           <input
             type="text"
             className="form-control "
-            name = "headOfSociety"
+            name="headOfSociety"
             ref={headOfSocietyRef}
             onChange={() => changeHandler(headOfSocietyRef)}
           />
 
           <div className="col-md-8">
-            <label for="validationServer02" className="form-label">
+            <label htmlFor="validationServer02" className="form-label">
               Village
             </label>
             <input
               type="text"
               className="form-control"
-              name = "village"
+              name="village"
               ref={villageRef}
               onChange={() => changeHandler(villageRef)}
             />
           </div>
 
           <div className="col-md-8">
-            <label for="title" className="form-label">
+            <label htmlFor="title" className="form-label">
               Mandal
             </label>
             <input
@@ -107,7 +119,7 @@ export default function AddSociety() {
           </div>
 
           <div className="col-md-8">
-            <label for="title" className="form-label">
+            <label htmlFor="title" className="form-label">
               District
             </label>
             <input
@@ -120,11 +132,11 @@ export default function AddSociety() {
           </div>
 
           <div className="col-md-8">
-            <label for="title" className="form-label">
+            <label htmlFor="title" className="form-label">
               Pincode
             </label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               name="pincode"
               ref={pincodeRef}
@@ -143,23 +155,21 @@ export default function AddSociety() {
         </div>
       </form>
 
-      <h2>{state.formStatus}</h2>
-      
+      <h2>{currentState.formStatus}</h2>
 
-      {state.newSociety?(
+      {currentState.newSociety ? (
         <div>
           <h2>Society Added Successfully</h2>
-          <DisplaySociety society={state.newSociety}/>
+          <DisplaySociety society={currentState.newSociety} />
         </div>
-      )
-        :("")
-      
-      }
+      ) : (
+        ""
+      )}
 
-      {state.errMsg ? (
+      {currentState.errMsg ? (
         <div>
           <h2>Request was not successful</h2>
-          <br>{state.errMsg}</br>
+          <br>{currentState.errMsg}</br>
         </div>
       ) : (
         ""
