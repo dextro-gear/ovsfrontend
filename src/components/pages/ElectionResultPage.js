@@ -122,17 +122,6 @@ class ElectionResultPage extends Component {
             ))}
           </div>
         </div>
-
-        {/* 
-                {
-        candidateID: 123,
-        candidateName: "Raja",
-        totalPolledVotes: 100,
-        totalCandidateVotes: 60,
-        candidatesVotesPercentage: 60.0,
-        result: "Elected",
-        societyName: "Madripoor",
-      } */}
       </div>
     );
   }
