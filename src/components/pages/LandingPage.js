@@ -18,10 +18,7 @@ class LandingPage extends Component {
         </div>
         <div className="container text-center px-4 py-5">
           <div className="container">
-            <Link
-              to="/register/voter"
-              className="btn btn-danger m-1 w-25 red-btn"
-            >
+            <Link to="/addVoter" className="btn btn-danger m-1 w-25 red-btn">
               Register as a voter
             </Link>
             <Link
@@ -33,7 +30,7 @@ class LandingPage extends Component {
           </div>
           <div className="container d.flex justify-content-center">
             <Link
-              to="/register/society"
+              to="/addSociety"
               className="btn btn-success m-1 w-25 green-btn"
             >
               Register a Society

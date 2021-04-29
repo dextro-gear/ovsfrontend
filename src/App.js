@@ -1,3 +1,4 @@
+import "./App.css";
 import { Route, BrowserRouter as Router, Link, Switch } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +13,6 @@ import GetSocietyById from "./components/pages/society/GetSocietyById";
 import CastNewVote from "./components/pages/votes/CastNewVote";
 import ViewVoteDetailsByVoterCardId from "./components/pages/votes/ViewVoteDetailsByVoterCardId";
 import ElectionResultPage from "./components/pages/ElectionResultPage";
-import "./App.css";
 
 function App() {
   return (
@@ -30,8 +30,7 @@ function App() {
           path="/byVoterId"
           component={ViewVoteDetailsByVoterCardId}
         />
-        <Route exact path="/addvoter" component={AddNewVoter} />
-        <Route exact path="/displayvoter" component={DisplayVoter} />
+        <Route exact path="/addVoter" component={AddNewVoter} />
         <Route exact path="/voterById" component={GetVoterById} />
       </Switch>
     </Router>

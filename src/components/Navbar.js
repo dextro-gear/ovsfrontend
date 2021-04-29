@@ -105,6 +105,29 @@ class Navbar extends Component {
                   </li>
                 </ul>
               </li>
+
+              <li className="nav-item dropdown">
+                <a
+                  href="#"
+                  className="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  role="button"
+                >
+                  Voter Service
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to="/addVoter">
+                      Register as voter
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/voterById">
+                      View Voter Details
+                    </Link>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
