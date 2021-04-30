@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import DisplayVoter from "./DisplayVoter";
 import commonStyle from "./commonStyle.module.css";
 import {fetchVoter} from "../../../services/VoterService";
+import Navbar from "../../Navbar";
 
+/**
+ * GetVoterById component is used to fetch the voter details by passing voterId cardno. through a form
+ * If that voterIdCard No. exists then it shows the voter details
+ * If that voterIdCard No. does not exists then it shows an error message.
+ * @returns GetVoterById function as default import
+ */
 export default function GetVoterById() {
 
     const idRef = React.createRef();
@@ -36,7 +43,8 @@ export default function GetVoterById() {
 
     return (
         <div>
-            <h1> Get voter details by cardid</h1>
+            <Navbar/>
+            <h2> Get voter details by Card ID</h2>
 
             <div className={commonStyle.content}>
                 <form onSubmit={submitHandler} className={commonStyle.content}>

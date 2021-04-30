@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import DisplayVoter from "./DisplayVoter";
 import { addVoter } from "../../../services/VoterService";
+import Navbar from "../../Navbar";
+
+/**
+ * AddNewVoter component is adding new voters by entering the required data in form.
+ * @returns AddNewVoter function as default import
+ */
 
 export default function AddNewVoter() {
+  
    /* const voter = {
         voterId: "1",
         voterIDCardNo : "1A",
@@ -60,7 +67,10 @@ export default function AddNewVoter() {
 
       const response = { voter: undefined, errMsg: undefined };
 
-
+/**
+ * submit handler function
+ * 
+ */
       const submitHandler = (event) => {
         event.preventDefault();
         setNewState({ ...currentState, formStatus: "form submitted successfully" });
@@ -76,6 +86,10 @@ export default function AddNewVoter() {
         })
       };
 
+/**
+ * change handler function
+ * 
+ */
       const changeHandler = (ref) => {
         const fieldName = ref.current.name;
         const fieldValue = ref.current.value;
@@ -93,6 +107,7 @@ export default function AddNewVoter() {
     return (
 
         <div>
+          <Navbar/>
         <form onSubmit={(event) => submitHandler(event)}>
           <div className="form-group">
           <label>Enter firstName </label>
