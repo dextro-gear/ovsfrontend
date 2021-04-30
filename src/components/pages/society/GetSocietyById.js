@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DisplaySociety from "./DisplaySociety";
-import {fetchSociety} from "../../../service/SocietyService";
+import {fetchSociety} from "../../services/SocietyService";
+import Navbar from "../../Navbar";
 
 export default function GetSocietyById(){
   // society = {
@@ -45,6 +46,8 @@ export default function GetSocietyById(){
   }
     return (
       <div>
+        <Navbar/>
+       <div className="container container-sm border">
         <h3>
           <i>Get Society Details</i>
         </h3>
@@ -59,8 +62,8 @@ export default function GetSocietyById(){
               className="form-control"
             />
           </div>
-          <div className="justify-content-md-centre">
-            <button className="btn btn-success " type="submit">
+          <div className="d-grid gap-2 d-md-flex justify-content-md-centre">
+            <button className="btn btn-success me-md-2 btn-border-radius-lg " type="submit">
               Get Society !
             </button>
           </div>
@@ -85,6 +88,7 @@ export default function GetSocietyById(){
             </div>
           ) :''
         }
+        </div>
         </div>
       
     );
