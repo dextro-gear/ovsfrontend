@@ -8,7 +8,7 @@ export default function SocietyHome() {
       <Navbar />
       <div className={commonStyle.content}>
         <div>
-          <h3> Welcome to Society Module home.</h3>
+          <h2> Welcome to Society Module home.</h2>
         </div>
       </div>
     </div>
