@@ -61,7 +61,7 @@ export default function ViewVoteDetailsByVoterCardId() {
         <button type="submit">Get vote details</button>
         <button type="reset">reset</button>
       </form>
-      <h1> Get vote details</h1>
+      <h5> Get vote details</h5>
 
       {currentState.vote ? (
         <div>
