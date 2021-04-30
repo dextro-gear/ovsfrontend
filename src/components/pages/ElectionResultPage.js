@@ -9,6 +9,10 @@ import {
 import ResultCard from "./electionresult/ResultCard";
 
 class ElectionResultPage extends Component {
+  /**
+   * @constructs ElectionResultPage.class
+   * @param {Object} props
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -23,48 +27,13 @@ class ElectionResultPage extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.fetchCurrentWinner = this.fetchCurrentWinner.bind(this);
     this.fetchElectionResults = this.fetchElectionResults.bind(this);
-
-    this.mockCandidate = {
-      candidateID: 666,
-      candidateName: "Raja",
-      totalPolledVotes: 100,
-      totalCandidateVotes: 60,
-      candidatesVotesPercentage: 60.0,
-      result: "Unannounced",
-      societyName: "Madripoor",
-    };
-
-    this.mockCandidates = [
-      {
-        candidateID: 123,
-        candidateName: "Raja",
-        totalPolledVotes: 100,
-        totalCandidateVotes: 60,
-        candidatesVotesPercentage: 60.0,
-        result: "Elected",
-        societyName: "Madripoor",
-      },
-      {
-        candidateID: 456,
-        candidateName: "Sundaram",
-        totalPolledVotes: 100,
-        totalCandidateVotes: 30,
-        candidatesVotesPercentage: 30.0,
-        result: "Not Elected",
-        societyName: "Madripoor",
-      },
-      {
-        candidateID: 789,
-        candidateName: "Abhishek",
-        totalPolledVotes: 100,
-        totalCandidateVotes: 10,
-        candidatesVotesPercentage: 10.0,
-        result: "Not Elected",
-        societyName: "Madripoor",
-      },
-    ];
   }
 
+  /**
+   * This function fetches the candidate-wise result once thenform is submitted
+   *
+   * @param {Event} event
+   */
   onFormSubmit(event) {
     event.preventDefault();
     this.setState((prevState) => ({ ...prevState, isFormSubmitted: true }));
@@ -80,14 +49,21 @@ class ElectionResultPage extends Component {
       .catch((error) => {
         console.log(error.response.data);
       });
-    // console.log(fetchedResult);
   }
 
+  /**
+   * Function to handle and update state at every change in the input fields.
+   *
+   * @param {Event} event
+   */
   onChangeHandler(event) {
     const { name, value } = event.target;
     this.setState((prevState) => ({ ...prevState, [name]: value }));
   }
 
+  /**
+   * This function fetches the current winning candidate and updates the state.
+   */
   fetchCurrentWinner() {
     let fetchedResult = getCurrentWinningCandidate();
     fetchedResult.then((response) => {
@@ -99,6 +75,9 @@ class ElectionResultPage extends Component {
     });
   }
 
+  /**
+   * This function fetches the final overall election result and updates the state.
+   */
   fetchElectionResults() {
     let fetchedResult = getElectionResult();
     fetchedResult.then((response) => {
@@ -199,3 +178,43 @@ class ElectionResultPage extends Component {
 }
 
 export default ElectionResultPage;
+
+/* this.mockCandidate = {
+  candidateID: 666,
+  candidateName: "Raja",
+  totalPolledVotes: 100,
+  totalCandidateVotes: 60,
+  candidatesVotesPercentage: 60.0,
+  result: "Unannounced",
+  societyName: "Madripoor",
+};
+
+this.mockCandidates = [
+  {
+    candidateID: 123,
+    candidateName: "Raja",
+    totalPolledVotes: 100,
+    totalCandidateVotes: 60,
+    candidatesVotesPercentage: 60.0,
+    result: "Elected",
+    societyName: "Madripoor",
+  },
+  {
+    candidateID: 456,
+    candidateName: "Sundaram",
+    totalPolledVotes: 100,
+    totalCandidateVotes: 30,
+    candidatesVotesPercentage: 30.0,
+    result: "Not Elected",
+    societyName: "Madripoor",
+  },
+  {
+    candidateID: 789,
+    candidateName: "Abhishek",
+    totalPolledVotes: 100,
+    totalCandidateVotes: 10,
+    candidatesVotesPercentage: 10.0,
+    result: "Not Elected",
+    societyName: "Madripoor",
+  },
+]; */
