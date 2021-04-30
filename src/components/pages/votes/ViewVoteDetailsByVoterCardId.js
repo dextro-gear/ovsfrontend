@@ -3,6 +3,13 @@ import { searchByVoterCardId } from "../../services/VoteService";
 import DisplayVote from "./DisplayVote";
 import Navbar from "../../Navbar";
 
+
+/**
+ * Component to fetch vote details by passing a voterCard id through a form
+ * Once the user clicks on submit button the vote details is displayed if the vote for that voterCardId exists, if it 
+ * doesn't exist then error message is shown.
+*/
+
 export default function ViewVoteDetailsByVoterCardId() {
   const voterCardIdRef = React.createRef();
 
@@ -54,7 +61,7 @@ export default function ViewVoteDetailsByVoterCardId() {
         <button type="submit">Get vote details</button>
         <button type="reset">reset</button>
       </form>
-      <h1> Get vote details</h1>
+      <h5> Get vote details</h5>
 
       {currentState.vote ? (
         <div>

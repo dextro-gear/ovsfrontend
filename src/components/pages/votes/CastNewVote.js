@@ -6,8 +6,12 @@ import commonStyle from "./commonStyle.module.css";
 import Navbar from "../../Navbar";
 import { addNewVote } from "../../services/VoteService";
 
+/**
+ *
+ * Cast new vote  Component this component is casting a new vote
+ * by entering the required  data in form
+ */
 export default function CastNewVote() {
-  
   const voterCardIdRef = React.createRef();
   const candidateIdRef = React.createRef();
 
@@ -29,7 +33,11 @@ export default function CastNewVote() {
   };
 
   const [state, setNewState] = useState(initialState);
-
+  /**
+   * This function fetches the vote details once the form is submitted
+   *
+   * @param {Event} event
+   */
   const submitHandler = (event) => {
     event.preventDefault();
     setNewState({ ...state, formStatus: "form submitted successfully" });
@@ -47,7 +55,10 @@ export default function CastNewVote() {
       .then((response) => setNewState({ ...state, vote: response.data }))
       .catch((error) => setNewState({ ...state, errMsg: error.message }));
   };
-
+  /**
+   *
+   * change Handler Function
+   */
   const changeHandler = (ref) => {
     const fieldName = ref.current.name;
     const fieldValue = ref.current.value;
@@ -77,7 +88,7 @@ export default function CastNewVote() {
 validation method for voterCardId
 */
   const validateVoterCardId = (voterCardId) => {
-    if (voterCardId< 0) {
+    if (voterCardId < 0) {
       return validationMessage.idSmallerThanzero;
     }
     return undefined;
