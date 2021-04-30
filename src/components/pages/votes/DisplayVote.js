@@ -1,6 +1,12 @@
+import commonStyle from "./commonStyle.module.css";
+/**
+ *
+ * Displaying details of vote that is casted
+ */
+
 export default function DisplayVote({ vote }) {
   return (
-    <div>
+    <div className={commonStyle.result}>
       <h5>voteId is</h5>
       <p>{vote.voteId}</p>
       <h5>candidateId is</h5>

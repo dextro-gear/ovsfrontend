@@ -1,7 +1,10 @@
-.error{
+.error {
+  color: red;
+  font-size: 1em;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 
-    color:red;
-    font-size: 1em; 
-    margin-bottom: 20px;
-    margin-top: 20px;
+.result {
+  color: rgb(31, 160, 20);
 }
