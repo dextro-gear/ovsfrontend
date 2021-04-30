@@ -34,8 +34,9 @@ export default function CastNewVote() {
 
   const [state, setNewState] = useState(initialState);
   /**
+   * This function fetches the vote details once the form is submitted
    *
-   * submit Handler Function
+   * @param {Event} event
    */
   const submitHandler = (event) => {
     event.preventDefault();

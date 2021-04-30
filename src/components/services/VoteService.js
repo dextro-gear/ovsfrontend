@@ -3,9 +3,10 @@ import axios from "axios";
 const baseUrl = "http://localhost:8585";
 
 /**
- * scenario : adding new vote 
- * parameter :takes form data as an input 
- * return promise
+ * This function cast the vote 
+ *
+ * @param {data} this is the data that user enter in the form 
+ * @returns {Promise} A promise of the response from the back-end.
  */
 
 function addNewVote(data) {
@@ -16,13 +17,13 @@ function addNewVote(data) {
 }
 
 /**
- * scenario : fetching vote details of castedVote from the voterCardId
- * parameter :take id as an input 
- * return promise
+ * This function fetches the vote details of the already casted vote with given voterCardID.
+ *
+ * @param {string} voterCardId ID of the voterCard whose casted vote details are to be retrieved
+ * @returns {Promise} A promise of the response from the back-end.
  */
-
-function searchByVoterCardId(id) {
-  const url = baseUrl + "/votes/byVoterCardId/" + id;
+function searchByVoterCardId(voterCardId) {
+  const url = baseUrl + "/votes/byVoterCardId/" +voterCardId ;
   const promise = axios.get(url);
   return promise;
 }
